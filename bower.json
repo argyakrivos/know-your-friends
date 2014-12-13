@@ -1,0 +1,28 @@
+{
+  "name": "know-your-friends",
+  "version": "0.1.0",
+  "authors": [
+    "Anargyros Akrivos <akrivos@gmail.com>"
+  ],
+  "description": "Manage your Facebook friends.",
+  "main": "app.js",
+  "keywords": [
+    "facebook",
+    "manage",
+    "friends",
+    "unfriend"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.akrivos.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "bootstrap-social": "~4.8.0"
+  }
+}

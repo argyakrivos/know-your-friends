@@ -1,0 +1,7 @@
+{
+  "facebook": {
+    "appId": "XXX",
+    "appSecret": "XXX"
+  },
+  "port": 3000
+}

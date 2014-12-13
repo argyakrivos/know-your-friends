@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body class="container">
+
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <main>
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Hello there!</h1>
+          <p>This is a simple utility to figure out your best Facebook mates, along with those you haven't kept touch.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <% if (!user) { %>
+        <div class="container">
+          <h2>Please <a href="/api/auth/facebook">sign in with Facebook</a>.</h2>
+        </div>
+        <% } else { %>
+        <div class="col-lg-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <span class="glyphicon glyphicon-thumbs-up"></span>
+              Best mates
+              <span class="badge" id="best-friends-count">0</span>
+            </div>
+            <div class="panel-body" id="best-friends">
+              <p>
+                <img src="spinner.gif" width="32" height="32">
+                Please wait while we're ranking your friends...
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <span class="glyphicon glyphicon-thumbs-down"></span>
+              It's been a while...
+              <span class="badge" id="worst-friends-count">0</span>
+            </div>
+            <div class="panel-body" id="worst-friends">
+              <p>
+                <img src="spinner.gif" width="32" height="32">
+                Please wait while we're ranking your friends...
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">Recipient:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="control-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="alert('Unfortunately Facebook does not allow posting message to other people. Nevertheless, the functionality is there')">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <hr>
+
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+
+    <% include ../partials/scripts %>
+    <% if (user) { %>
+      <script>
+        jQuery(document).ready(function() {
+          loadMyFriends();
+        });
+      </script>
+    <% } %>
+  </body>
+</html>
